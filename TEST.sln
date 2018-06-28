@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST", "TEST\TEST.csproj", "{A431E95C-C7B5-4818-974C-474C51C07835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationDrawer_PopUpMenu", "NavigationDrawer_PopUpMenu\NavigationDrawer_PopUpMenu.csproj", "{6DCCA9B7-DEC6-4C60-BF1C-2F0D873CE904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A431E95C-C7B5-4818-974C-474C51C07835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A431E95C-C7B5-4818-974C-474C51C07835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A431E95C-C7B5-4818-974C-474C51C07835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A431E95C-C7B5-4818-974C-474C51C07835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DCCA9B7-DEC6-4C60-BF1C-2F0D873CE904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DCCA9B7-DEC6-4C60-BF1C-2F0D873CE904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DCCA9B7-DEC6-4C60-BF1C-2F0D873CE904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DCCA9B7-DEC6-4C60-BF1C-2F0D873CE904}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A527CAE6-3C50-4102-A8CD-68721A0DC269}
+	EndGlobalSection
+EndGlobal
