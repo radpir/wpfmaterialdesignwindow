@@ -1,0 +1,95 @@
+﻿<Window x:Class="NavigationDrawer_PopUpMenu.MainWindow3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NavigationDrawer_PopUpMenu"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Foreground="White">
+    <Window.Resources>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Panel Menu -->
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="60" VerticalAlignment="Top" Background="#FF084E6E">
+            <TextBlock Text="Nice Window" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="User: Konrad Pirog" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <StackPanel Width="150">
+                        <Button Content="Account"/>
+                        <Button Content="Settings"/>
+                        <Button Content="Help"/>
+                        <Separator/>
+                        <Button x:Name="ButtonPopUpLogout" Content="Logout" Click="ButtonPopUpLogout_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+
+        <!-- Side Panel Menu -->
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF0B50B4">
+            <StackPanel>
+                <Grid Height="60" Background="Yellow">
+                    <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF0B50B4" Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonOpenMenu"  Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Visible" Click="ButtonOpenMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF0B50B4" Kind="Menu" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
+                <ListView x:Name="lvSideMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="Wheat">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" ToolTip="{Binding SideMenuItemText}">
+                                <materialDesign:PackIcon Kind="{Binding SideMenuItemIconName}" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding SideMenuItemText}" VerticalAlignment="Center" Margin="20 10"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>
+
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
+              Background="Azure">
+            <ContentPresenter Content="test content abc 123 qwerty"/>
+        </Grid>
+    </Grid>
+</Window>
